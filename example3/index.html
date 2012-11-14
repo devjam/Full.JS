@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>sample</title>
+		<!-- js -->
+		<script src="../javascripts/lib/jquery.js"></script>
+		<script src="../javascripts/lib/jquery.mousewheel.js"></script>
+		<script src="../javascripts/lib/stats.js"></script>
+		<script src="../javascripts/full.js"></script>
+		<script src="js/subSection1.js"></script>
+		<script src="js/subSection2.js"></script>
+		<script src="js/subSection3.js"></script>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../javascripts/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="../javascripts/lib/jquery.belatedPNG.js"></script>
+		<![endif]-->
+		<script>
+			$(function(){
+				var pos = 0;
+				$(".section").addToFullJS({
+					layoutType: FullJS.LAYOUT_TYPE_VERTICAL
+				});
+				$("body").click(function(e){
+					var manager = FullJS.getManager()
+					var vector = 1;
+					section = manager.getWaitingSectionAt(0)					
+
+					if(e.pageX < FullJS.Util.window.size().width * 0.5){
+						vector = -1;
+					}else{
+						vector = 1;
+					}
+					
+					manager.gotoSection(section, vector);
+				});
+
+				var stats = new Stats();
+				$(stats.domElement).css({
+					position: "fixed",
+					left: 5,
+					top: 5,
+					zIndex: 1000
+				}).appendTo("body");
+
+				function update(){
+					stats.update();
+					requestAnimationFrame(update);
+				}
+				update();
+			});
+		</script>
+		<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+.section {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#Section1 {
+	/*height: 900px;*/
+	background-color: #FF0000;
+}
+#Section2 {
+	/*height: 600px;*/
+	background-color: #00FF00;
+}
+#Section3 {
+	/*height: 300px;*/
+	background-color: #0000FF;
+}
+		</style>
+	</head>
+	<body>
+		<div id="Section1" class="section"></div>
+		<div id="Section2" class="section"></div>
+		<div id="Section3" class="section"></div>
+		<div id="Section4" class="section"></div>
+	</body>
+</html>

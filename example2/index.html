@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>sample</title>
+		<!-- js -->
+		<script src="../javascripts/lib/jquery.js"></script>
+		<script src="../javascripts/lib/jquery.mousewheel.js"></script>
+		<script src="../javascripts/lib/stats.js"></script>
+		<script src="../javascripts/full.js"></script>
+		<script src="js/subSection1.js"></script>
+		<script src="js/subSection2.js"></script>
+		<script src="js/subSection3.js"></script>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../javascripts/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="../javascripts/lib/jquery.belatedPNG.js"></script>
+		<![endif]-->
+		<script>
+			$(function(){
+				$(".section").addToFullJS({
+					useWheel: true,
+					useScrollLayout: true,
+					layoutType: FullJS.LAYOUT_TYPE_VERTICAL
+				});
+
+				var stats = new Stats();
+				$(stats.domElement).css({
+					position: "fixed",
+					left: 5,
+					top: 5,
+					zIndex: 1000
+				}).appendTo("body");
+
+				function update(){
+					stats.update();
+					requestAnimationFrame(update);
+				}
+				update();
+			});
+		</script>
+		<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+.section {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#Section1 {
+	
+}
+#Section2 {
+	background: url("images/bg_line.gif") repeat;
+}
+#Section3 {
+	height: 1827px;
+}
+
+#Section3 #oyaji {
+	position: absolute;
+	left: 50%;
+}
+#Section3 img {
+	position: absolute;
+	z-index: 1;
+}
+#Section3 img.karada {
+	left: -750px;
+	top: 105px;
+}
+#Section3 img.shiru {
+	left: -110px;
+	top: 700px;
+}
+#Section3 img.kuchi {
+	left: -150px;
+	top: 1070px;
+}
+#Section3 img.hidarime {
+	left: -276px;
+	top: 733px;
+}
+#Section3 img.migime {
+	left: 115px;
+	top: 719px;
+}
+#Section3 img.hana {
+	left: -155px;
+	top: 700px;
+}
+#Section3 img.chapon {
+	left: -170px;
+	top: 0;
+}
+
+		</style>
+	</head>
+	<body>
+		<div id="Section1" class="section"></div>
+		<div id="Section2" class="section"></div>
+		<div id="Section3" class="section">
+			<div id="oyaji">
+				<img src="images/karada.gif" class="karada" />
+				<img src="images/kuchi.gif" class="kuchi" />
+
+				<img src="images/shiru1.gif" class="shiru" />
+				<img src="images/shiru2.gif" class="shiru" />
+				<img src="images/shiru3.gif" class="shiru" />
+				<img src="images/shiru4.gif" class="shiru" />
+
+				<img src="images/hidarime.gif" class="hidarime" />
+				<img src="images/migime.gif" class="migime" />
+				<img src="images/hana.gif" class="hana" />
+				
+				<img src="images/chapon.gif" class="chapon" />
+			</div>
+		</div>
+	</body>
+</html>
