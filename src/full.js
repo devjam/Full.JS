@@ -163,11 +163,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     })();
 
     Util.window = (function() {
-      var doc, heigth, isUpdate, onResize, pageHeight, pageWidth, resizeCallbacks, width, win;
+      var doc, height, isUpdate, onResize, pageHeight, pageWidth, resizeCallbacks, width, win;
       win = $(window);
       doc = $(document);
       width = 0;
-      heigth = 0;
+      height = 0;
       pageWidth = 0;
       pageHeight = 0;
       resizeCallbacks = [];
@@ -184,7 +184,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       win.resize(onResize);
       $(function() {
         width = win.width();
-        heigth = win.height();
+        height = win.height();
         pageWidth = doc.width();
         return pageHeight = doc.height();
       });
@@ -196,11 +196,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           if (withUpdate || isUpdate & 1) {
             isUpdate = (isUpdate | 1) ^ 1;
             width = win.width();
-            heigth = win.height();
+            height = win.height();
           }
           return {
             width: width,
-            height: heigth
+            height: height
           };
         },
         pageSize: function(withUpdate) {
@@ -214,14 +214,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           }
           return {
             width: pageWidth,
-            height: pageHeigth
+            height: pageHeight
           };
-        },
-        isSizeUpdate: function() {
-          return isUpdate |= 1;
-        },
-        isPageSizeUpdate: function() {
-          return isUpdate |= 2;
         },
         bindResize: function(callback) {
           if (typeof callback === "function" && $.inArray(callback, resizeCallbacks) === -1) {
