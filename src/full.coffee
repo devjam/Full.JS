@@ -31,7 +31,7 @@ Util = class FullJS.Util
 	@UA = (->
 		_ua = navigator.userAgent.toLowerCase()
 		ua =
-			isIE:　false
+			isIE: false
 			isIE6: false
 			isIE7: false
 			isIE8: false
@@ -146,7 +146,7 @@ Util = class FullJS.Util
 		win = $ window
 		doc = $ document
 		width = 0
-		heigth = 0
+		height = 0
 		pageWidth = 0
 		pageHeight = 0
 		resizeCallbacks = []
@@ -162,7 +162,7 @@ Util = class FullJS.Util
 		win.resize onResize
 		$(->
 			width = win.width()
-			heigth = win.height()
+			height = win.height()
 			pageWidth = doc.width()
 			pageHeight = doc.height()
 		)
@@ -171,10 +171,10 @@ Util = class FullJS.Util
 			if withUpdate || isUpdate & 1
 				isUpdate = (isUpdate | 1) ^ 1
 				width = win.width()
-				heigth = win.height()
+				height = win.height()
 
 			width: width
-			height: heigth
+			height: height
 			
 		pageSize: (withUpdate = false)->
 			if withUpdate || isUpdate & 2
@@ -183,13 +183,8 @@ Util = class FullJS.Util
 				pageHeight = doc.height()
 
 			width: pageWidth
-			height: pageHeigth
+			height: pageHeight
 
-		isSizeUpdate: ->
-			isUpdate |= 1
-
-		isPageSizeUpdate: ->
-			isUpdate |= 2
 
 		bindResize: (callback)->
 			if typeof callback == "function" && $.inArray(callback, resizeCallbacks) == -1
